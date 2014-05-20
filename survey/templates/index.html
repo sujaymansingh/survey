@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
+
+    <title>Survey Form</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/sticky-footer.css" rel="stylesheet">
+    <link href="/static/styles.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+    <body>
+
+        <form action="/" method="POST" id="main-form">
+
+        <!-- Begin page content -->
+        <div class="container">
+            <div class="page-header">
+                <h1>CHAUPAL UK heritage awareness survey</h1>
+            </div>
+
+            <p class="lead">CHAUPAL UK is planning to initiate an NHS heritage awareness project and in particular highlight the role of immigrant medical personel in provision of NHS medical care since its inception.
+            </p>
+
+            <p>We would be grateful if you would take a few minutes to fill in the questionaire below and send it to us. This will help CHAUPAL form a detailed plan to initiate the project.</p>
+
+            {% for question in questions %}
+                {% if question.is_label %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            &nbsp;<br/>
+                            <strong>{{ question.text }}</strong>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="row">
+                        <div class="col-md-8 question">
+                            <span class="label label-danger hide" id="error-{{ question.name }}">!</span>
+                            <span id="label-{{ question.name }}">{{ question.text }}</span>
+                        </div>
+                        <div class="col-md-4 answer">
+                            <div class="radio-inline"><label><input class="question question-yes" type="radio" name="{{ question.name }}" value="yes">Yes</label></div>
+                            <div class="radio-inline"><label><input class="question question-no" type="radio" name="{{ question.name }}" value="no">No</label></div>
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+
+            <div class="row">
+                <div class="col-md-12">Please add any further comments below:</div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <textarea class="form-control" rows="3" name="99_comments"></textarea>
+                </div>
+            </div>
+
+            <div class="row pull-right">
+                <div class="col-md-12">&nbsp;<br/><button class="btn btn-primary" type="submit">Submit Survey</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted">(c) Chaupal-UK 2014</p>
+        </div>
+    </div>
+
+
+<div class="modal fade" id="error-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Please answer all the questions</h4>
+      </div>
+      <div class="modal-body">
+        <p>Please answer &quot;Yes&quot; or &quot;No&quot; for each question</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/jquery-1.11.1.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <script src="/static/validate.js"></script>
+  </body>
+</html>
