@@ -6,9 +6,12 @@ import uuid
 
 import flask
 import boto.s3.connection as s3
+from werkzeug.contrib.fixers import ProxyFix
 
 
 app = flask.Flask(__name__)
+
+app.wsgi_app = ProxyFix(app.wsgi_app)
 
 
 @app.route("/", methods=["GET", "POST"])
