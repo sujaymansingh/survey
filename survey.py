@@ -86,7 +86,7 @@ def record_answers():
     key.set_acl("public-read")
     key.close()
 
-    return flask.redirect(flask.url_for("thank_you"))
+    return flask.redirect(BASE_URL + "/thank-you")
 
 
 if __name__ == "__main__":
