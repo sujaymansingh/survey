@@ -75,7 +75,7 @@ def record_answers():
     for item in flask.request.form:
         survey_response[item] = flask.request.form[item]
 
-    survey_response["remote_addr"] = flask.request.remote_addr
+    survey_response["remote_addr"] = flask.request.headers["X-Real-IP"]
     survey_response["datetime_utc"] = datetime.datetime.utcnow().isoformat()
 
     conn = s3.S3Connection()
