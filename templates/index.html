@@ -11,11 +11,11 @@
     <title>Survey Form</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ BASE_URL }}static/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/static/sticky-footer.css" rel="stylesheet">
-    <link href="/static/styles.css" rel="stylesheet">
+    <link href="{{ BASE_URL }}static/sticky-footer.css" rel="stylesheet">
+    <link href="{{ BASE_URL }}static/styles.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,7 +26,7 @@
 
     <body>
 
-        <form action="/" method="POST" id="main-form">
+        <form action="{{ BASE_URL }}" method="POST" id="main-form">
 
         <!-- Begin page content -->
         <div class="container">
@@ -105,8 +105,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/static/jquery-1.11.1.min.js"></script>
-    <script src="/static/bootstrap.min.js"></script>
-    <script src="/static/validate.js"></script>
+    <script src="{{ BASE_URL }}static/jquery-1.11.1.min.js"></script>
+    <script src="{{ BASE_URL }}static/bootstrap.min.js"></script>
+    <script src="{{ BASE_URL }}static/validate.js"></script>
   </body>
 </html>

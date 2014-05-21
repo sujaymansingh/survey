@@ -2,6 +2,7 @@
 """
 import datetime
 import json
+import os
 import uuid
 
 import flask
@@ -12,6 +13,8 @@ from werkzeug.contrib.fixers import ProxyFix
 app = flask.Flask(__name__)
 
 app.wsgi_app = ProxyFix(app.wsgi_app)
+
+BASE_URL = os.getenv("BASE_URL", "/")
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -58,12 +61,12 @@ def index():
         },
     ]
 
-    return flask.render_template("index.html", questions=questions)
+    return flask.render_template("index.html", questions=questions, BASE_URL=BASE_URL)
 
 
 @app.route("/thank-you")
 def thank_you():
-    return flask.render_template("thank_you.html")
+    return flask.render_template("thank_you.html", BASE_URL=BASE_URL)
 
 
 def record_answers():
